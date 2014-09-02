@@ -1,0 +1,23 @@
+{
+    "name": "tjbenator/irc",
+    "description": "",
+    "authors": [
+        {
+            "name": "Travis Beck",
+            "email": "tjbenator@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Tjbenator\\Irc": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
