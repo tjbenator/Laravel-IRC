@@ -4,82 +4,42 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "86616c0f34b2f9400351938d436fbd73",
+    "hash": "5ee6e9f868d26cc9492647a5926ec9ab",
     "packages": [
         {
-            "name": "illuminate/contracts",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "e4c1a655d320eb53b2a134ba5a654207621ee8a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/e4c1a655d320eb53b2a134ba5a654207621ee8a6",
-                "reference": "e4c1a655d320eb53b2a134ba5a654207621ee8a6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "time": "2014-08-28 21:56:18"
-        },
-        {
             "name": "illuminate/support",
-            "version": "dev-master",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "1ada06ce5e0368cabce9e521d4ff33ca29b3f356"
+                "reference": "8702d655da1f7502037a2206df38399656ff35ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/1ada06ce5e0368cabce9e521d4ff33ca29b3f356",
-                "reference": "1ada06ce5e0368cabce9e521d4ff33ca29b3f356",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/8702d655da1f7502037a2206df38399656ff35ae",
+                "reference": "8702d655da1f7502037a2206df38399656ff35ae",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "4.3.*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "jeremeamia/superclosure": "~1.0",
-                "patchwork/utf8": "~1.1"
+                "patchwork/utf8": "1.1.*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
+                "psr-0": {
+                    "Illuminate\\Support": ""
                 },
                 "files": [
-                    "helpers.php"
+                    "Illuminate/Support/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -92,7 +52,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-08-30 09:41:12"
+            "time": "2014-08-05 12:08:34"
         }
     ],
     "packages-dev": [
@@ -101,7 +61,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [
 
     ],
