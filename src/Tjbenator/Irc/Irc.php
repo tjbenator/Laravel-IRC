@@ -9,7 +9,8 @@ class Irc
 	private $username = null;
 	private $registered = false;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->username = Config::get('tjbenator/irc::username');
 		$this->channels = Config::get('tjbenator/irc::channels');
 		$this->server = Config::get('tjbenator/irc::server');
@@ -24,7 +25,8 @@ class Irc
 		$this->connect();		
 	}
 
-	public function __destruct() {
+	public function __destruct()
+	{
 		socket_close($this->socket);
 	}
 
@@ -35,7 +37,8 @@ class Irc
 			flush();
 			$ex = explode(" ", $data);
 
-			if ($ex[0] == "PING") {
+			if ($ex[0] == "PING")
+			{
 				$this->send_data("PONG " . $ex[1]);
 				if ($this->nickservpass)
 					$this->send_data("NICKSERV IDENTIFY {$this->nickservpass}");
@@ -57,13 +60,18 @@ class Irc
 		$this->send_data("JOIN $channel");
 	}
 
-	public function message($message)
+	public function message($channel, $message)
 	{
-		foreach ($this->channels as $channel) {
-			$this->join($channel);
-			$this->say($channel, $message);
-		}
+		$this->join($channel);
+		$this->say($channel, $message);
 	}
 
-
+	public function broadcast($message, $channels = null)
+	{
+		$channels = (is_null($channels)) ? $this->channels : $channels;
+		foreach ($channels as $channel)
+		{
+			$this->message($channel, $message);
+		}
+	}
 }
