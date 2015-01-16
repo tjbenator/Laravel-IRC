@@ -18,7 +18,7 @@ class IrcServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('tjbenator/irc', 'tjbenator/irc');
+		$this->package('tjbenator/irc');
 	}
 
 	/**
@@ -31,7 +31,7 @@ class IrcServiceProvider extends ServiceProvider {
 
 		$this->app['irc'] = $this->app->share(function($app)
 		{
-			return new \Tjbenator\Irc\Irc;
+			return new \Tjbenator\Irc\Irc($app);
 		});
 
 		$this->app->booting(function()
@@ -39,6 +39,22 @@ class IrcServiceProvider extends ServiceProvider {
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 			$loader->alias('Irc', 'Tjbenator\Irc\Facades\Irc');
 		});
+
+		$this->registerCommands();
+	}
+
+	private function registerCommands()
+	{
+		$this->app['command.irc.message'] = $this->app->share(function($app)
+		{
+			return new \Tjbenator\Irc\Commands\Message;
+		});
+		$this->app['command.irc.broadcast'] = $this->app->share(function($app)
+		{
+			return new \Tjbenator\Irc\Commands\Broadcast;
+		});
+		$this->commands('command.irc.message');
+		$this->commands('command.irc.broadcast');
 	}
 
 	/**

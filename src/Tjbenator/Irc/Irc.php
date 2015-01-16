@@ -9,15 +9,17 @@ class Irc
 	private $username = null;
 	private $registered = false;
 
-	public function __construct()
-	{
-		$this->username = Config::get('tjbenator/irc::username');
-		$this->channels = Config::get('tjbenator/irc::channels');
-		$this->server = Config::get('tjbenator/irc::server');
-		$this->port = Config::get('tjbenator/irc::port');
-		$this->hostname = Config::get('tjbenator/irc::hostname');
-		$this->nickservpass = Config::get('tjbenator/irc::nickservpass');
+	public function __construct($app) {
+		$this->app = $app;
+		$this->username = $this->app['config']['irc::username'];
+		$this->channels = $this->app['config']['irc::channels'];
+		$this->server = $this->app['config']['irc::server'];
+		$this->port = $this->app['config']['irc::port'];
+		$this->hostname = $this->app['config']['irc::hostname'];
+		$this->nickservpass = $this->app['config']['irc::nickservpass'];
+		$this->joinchannels = $this->app['config']['irc::joinchannels'];
 		$this->socket = fsockopen($this->server, $this->port);
+
 
 		$this->send_data("NICK {$this->username}");
 		$this->send_data("USER {$this->username} {$this->hostname} {$this->server} {$this->username}");
@@ -27,7 +29,10 @@ class Irc
 
 	public function __destruct()
 	{
-		socket_close($this->socket);
+		if ($this->socket)
+		{
+			fclose($this->socket);
+		}
 	}
 
 	private function connect()
@@ -62,7 +67,13 @@ class Irc
 
 	public function message($channel, $message)
 	{
-		$this->join($channel);
+		#Only join if it is actually a channel
+		if ($this->joinchannels && preg_match('/#(\w*[a-zA-Z_0-9]+\w*)/', $channel))
+		{
+			$this->join($channel);
+		}
+
+		#Say message in channel or at user
 		$this->say($channel, $message);
 	}
 

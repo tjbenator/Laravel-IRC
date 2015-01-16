@@ -1,10 +1,11 @@
 <?php
-return array(
-	'hostname' => '',
-	'server' => '',
+return [
+	'hostname' => 'example.com',
+	'server' => 'irc.pngn.co',
 	'port' => '6667',
-	'username' => '',
+	'username' => 'meta',
 	'password' => '',
 	'channels' => array('#chat'),
-	'nickservpass' => false
-);
+	'nickservpass' => false,
+	'joinchannels' => false
+];
