@@ -53,8 +53,10 @@ class IrcServiceProvider extends ServiceProvider {
 		{
 			return new \Tjbenator\Irc\Commands\Broadcast;
 		});
-		$this->commands('command.irc.message');
-		$this->commands('command.irc.broadcast');
+		$this->commands([
+			'command.irc.broadcast',
+			'command.irc.message'
+		]);
 	}
 
 	/**
