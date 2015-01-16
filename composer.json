@@ -1,6 +1,8 @@
 {
     "name": "tjbenator/irc",
     "description": "",
+    "keywords": ["laravel", "irc", "messaging"],
+	"license": "MIT",
     "authors": [
         {
             "name": "Travis Beck",
